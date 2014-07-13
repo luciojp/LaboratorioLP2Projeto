@@ -3,7 +3,7 @@ package ufcg.cc.lp2.logica;
 import java.util.ArrayList;
 
 public class GerenteDeUsuarios  {
-	private ArrayList<Usuario> todosUsuarios;
+	private ArrayList<Pessoa> todosUsuarios;
 	
 	public GerenteDeUsuarios(String nome, String email, String senha1,
 			String senha2, String dicaSenha) {
@@ -11,9 +11,9 @@ public class GerenteDeUsuarios  {
 	}
 	
 	public void addUsuario(Object obj) throws Exception{
-		if (!(obj instanceof Usuario)) throw new Exception("Você precisa adicionar um Objeto do tipo Usuário.");
+		if (!(obj instanceof Pessoa)) throw new Exception("Vocï¿½ precisa adicionar um Objeto do tipo Usuï¿½rio.");
 		
-		Usuario novoUsuario = (Usuario) obj;
+		Pessoa novoUsuario = (Pessoa) obj;
 		todosUsuarios.add(novoUsuario);
 	}
 }

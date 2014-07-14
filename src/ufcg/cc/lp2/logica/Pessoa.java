@@ -6,7 +6,7 @@ public class Pessoa implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private String nome, email, senha1, dicaSenha;
-	public BancoDeDados banco;
+	private BancoDeDados bd = new BancoDeDados();
 	public boolean validado = false;
 
 	/**
@@ -133,7 +133,8 @@ public class Pessoa implements Serializable{
 	 * @return se um email ja esta na base de dados
 	 */
 	private boolean emailJaCadastrado(String email) throws Exception{
-		//tem que implementar isso ainda
+		if (bd.hasEmail(email))
+			return true;
 		return false;
 	}
 

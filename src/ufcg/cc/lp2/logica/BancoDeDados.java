@@ -1,6 +1,7 @@
 package ufcg.cc.lp2.logica;
 
 import projetop2.utils.ArquivoDeDados;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -41,6 +42,37 @@ public class BancoDeDados {
 			}
 		}
 		return false;		
+	}
+	
+	
+	/**
+	 * Retorna um boolean indicando se um e-mail passado como parametro ja existe no BD!
+	 * @author Clenimar
+	 * @param email
+	 * @return
+	 */
+	public boolean hasEmail(String email){
+		if (pesquisaUsuario(email) != null)
+			return true;
+		return false;
+	}
+	/**
+	 * Metodo para pesquisar usuarios no Banco de dados
+	 * @author clenimar
+	 * @param email
+	 * @return o usuario, caso exista; ou null, caso nao
+	 */
+	
+	public Usuario pesquisaUsuario(String email){
+			
+			Iterator<Usuario> it = getUsuarios().iterator();
+			Usuario usuarioIt;
+			while (it.hasNext()){
+				usuarioIt = it.next();
+				if (email.equals(usuarioIt.getEmail()))
+					return usuarioIt;
+			}
+			return null;
 	}
 	
 	/**
@@ -86,8 +118,18 @@ public class BancoDeDados {
 	 * @return a lista de usuarios
 	 * @throws Exception
 	 */
-	public List<Usuario> carregar() throws Exception{
-		return arquivo.carregaObjetos();
+	public boolean carregar() throws Exception{
+		if(arquivo.carregaObjetos() instanceof List<?>){
+			bd.clear();
+			Iterator<Usuario> it = arquivo.carregaObjetos().iterator();
+			Usuario usuarioIt;
+			while (it.hasNext()){
+				usuarioIt = it.next();
+				bd.add(usuarioIt);
+			}
+			return true;
+		}
+		return false;
 	}
 	
 	/** Limpa o banco de dados

@@ -1,41 +1,21 @@
 package ufcg.cc.lp2.logica;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 public class GerenteDeUsuarios  {
-	private ArrayList<Pessoa> todosUsuarios;
+	private BancoDeDados bd = new BancoDeDados();
 	
-	public GerenteDeUsuarios(String nome, String email, String senha1,
-			String senha2, String dicaSenha) {
-
+	public GerenteDeUsuarios(String nome, String email, String senha1, String senha2, String dicaSenha) {
+		
 	}
 	
 	/**
-	 * Adiciona Usuario para lista geral dos Usuarios , verifica se se o usuario passado é null , e a pessoa
-	 * ja existe .  Se for verdadeira uma das opçoes lança exceçao.
-	 *
-	 * @author Nicolas Gabriel
-	 * @param obj
-	 * @throws Exception
+	 * Adiciona um usuario ao banco de dados, caso ele nao exista.
+	 * @author Clenimar
+	 * @param Os atributos do novo usuario
+	 * @throws Exception, caso a criacao do novo usuario seja invalidada
 	 */
-	public void addUsuario(Object obj) throws Exception{
-		if (!(obj instanceof Pessoa)) throw new Exception("Voce precisa adicionar um Objeto do tipo Usuario.");
-		
-		Pessoa novoUsuario = (Pessoa) obj;
-		
-		Iterator<Pessoa> it = todosUsuarios.iterator();
-		Pessoa usuarioIt;
-		while (it.hasNext()){
-			usuarioIt = it.next();
-			if (obj.equals(usuarioIt)){
-				throw new Exception("Usuario ja existente.");
-				
-			}
-		}
-
-		
-		todosUsuarios.add(novoUsuario);
+	public void addUsuario(String nome, String email, String senha1, String senha2, String dicaSenha) throws Exception{
+		Usuario usuario = new Usuario(nome, email, senha1, senha2, dicaSenha);
+		bd.adicionarUsuario(usuario);
 	}
 	
 	/**
@@ -46,20 +26,7 @@ public class GerenteDeUsuarios  {
 	 * @return Descricao do Usuario , com nome e email
 	 */
 	
-	public String pesquisaUsuario(String email){
-		
-		Iterator<Pessoa> it = todosUsuarios.iterator();
-		Pessoa usuarioIt;
-		while (it.hasNext()){
-			usuarioIt = it.next();
-			if (this.equals(usuarioIt)){
-				return usuarioIt.toString();
-				
-			}
-		}
-		
-		return "Usuario Inexistente";
-
-		
+	public Usuario pesquisaUsuario(String email){
+		return bd.pesquisaUsuario(email);
 	}
 }

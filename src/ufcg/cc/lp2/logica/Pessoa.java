@@ -39,9 +39,7 @@ public class Pessoa implements Serializable{
 	 * 				vê isso, Lucio.
 	 */
 	private boolean checaNome(String nome) throws Exception{
-		if (nome == null || nome.equals(""))
-			throw new Exception("Nome invalido.");
-		if (checaEntradaEmBranco(nome))
+		if (nome == null || nome.equals("") || checaEntradaEmBranco(nome))
 			throw new Exception("Nome invalido.");
 		return true;
 	}
@@ -120,7 +118,7 @@ public class Pessoa implements Serializable{
 	 */
 	private boolean checaEntradaEmBranco(String s){
 		int tam = s.length();
-		for (int i = 0; i <= tam; i++){
+		for (int i = 0; i < tam; i++){
 			if (!Character.isWhitespace(s.charAt(i)))
 				return false;
 		}

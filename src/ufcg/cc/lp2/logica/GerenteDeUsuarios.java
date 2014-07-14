@@ -52,7 +52,7 @@ public class GerenteDeUsuarios  {
 		Pessoa usuarioIt;
 		while (it.hasNext()){
 			usuarioIt = it.next();
-			if (email.equals(usuarioIt.getEmail())){
+			if (this.equals(usuarioIt)){
 				return usuarioIt.toString();
 				
 			}

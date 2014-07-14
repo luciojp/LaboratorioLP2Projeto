@@ -14,6 +14,7 @@ public class GerenteDeUsuarios  {
 	 * @throws Exception, caso a criacao do novo usuario seja invalidada
 	 */
 	public void addUsuario(String nome, String email, String senha1, String senha2, String dicaSenha) throws Exception{
+		
 		Usuario usuario = new Usuario(nome, email, senha1, senha2, dicaSenha);
 		bd.adicionarUsuario(usuario);
 	}

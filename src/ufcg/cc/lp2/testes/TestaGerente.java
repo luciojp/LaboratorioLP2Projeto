@@ -18,11 +18,11 @@ public class TestaGerente {
 		try {
 			gerente = new GerenteDeUsuarios("gerente", "gerente@gmail.com", "123456", "123456", "umaAi");
 			cliente = new Usuario("cliente1", "cliente1@gmail.com", "1234567", "1234567", "outraAi");
-			gerente.addUsuario(cliente);
-			gerente.addUsuario(cliente);
+			gerente.addUsuario("cliente1", "cliente1@gmail.com", "1234567", "1234567", "outraAi");
+			gerente.addUsuario("cliente1", "cliente1@gmail.com", "1234567", "1234567", "outraAi");
 			Assert.fail("Esperava excecao, pois nao pode adicionar um cliente igual.");
 		} catch (Exception e) {
-			Assert.assertEquals("Mensagem errada", "Usuario ja existente.", e.getMessage());
+			Assert.assertEquals("Mensagem errada", "Usuario existente.", e.getMessage());
 		}
 		
 	}
@@ -32,8 +32,8 @@ public class TestaGerente {
 		
 		gerente = new GerenteDeUsuarios("gerente", "gerente@gmail.com", "123456", "123456", "umaAi");
 		cliente = new Usuario("cliente1", "cliente1@gmail.com", "1234567", "1234567", "outraAi");
-		gerente.addUsuario(cliente);
-		Assert.assertEquals("cliente1@gmail.com", gerente.pesquisaUsuario("cliente1@gmail.com"));
+		gerente.addUsuario("cliente1", "cliente1@gmail.com", "1234567", "1234567", "outraAi");
+		Assert.assertEquals("cliente1 ", gerente.pesquisaUsuario("cliente1@gmail.com"));
 		
 		
 	}

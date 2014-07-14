@@ -29,7 +29,7 @@ public class GerenteDeUsuarios  {
 		while (it.hasNext()){
 			usuarioIt = it.next();
 			if (obj.equals(usuarioIt)){
-				throw new Exception("Usuario Já existente.");
+				throw new Exception("Usuario ja existente.");
 				
 			}
 		}

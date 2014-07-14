@@ -6,6 +6,7 @@ public class Pessoa implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private String nome, email, senha1, dicaSenha;
+	public BancoDeDados banco;
 
 	/**
 	 * @Autor Antonio Lucio - Apenas criacao do construtor e geracao dos gets and sets - 09/07/2014 - 20:14
@@ -22,6 +23,7 @@ public class Pessoa implements Serializable{
 		checaTamanhoSenha(senha1);
 		checaSenhasIguais(senha1, senha2);
 		checaDicaSenha(senha1, dicaSenha);
+		emailJaCadastrado(email);
 		this.nome = nome;
 		this.email = email;
 		this.senha1 = senha1;
@@ -52,9 +54,9 @@ public class Pessoa implements Serializable{
 	private boolean checaTamanhoSenha(String senha) throws Exception{
 		if (senha == null)
 			throw new Exception("Senha invalida!");
-		if (checaEntradaEmBranco(senha))
+		else if (checaEntradaEmBranco(senha))
 			throw new Exception("Senha invalida!");
-		if (senha.length() < 6 || senha.length() > 8) {
+		else if (senha.length() < 6 || senha.length() > 8) {
 			throw new Exception("Tamanho da senha invalido.");
 		}
 		return true;
@@ -130,8 +132,8 @@ public class Pessoa implements Serializable{
 	 * @param email
 	 * @return se um email ja esta na base de dados
 	 */
-	private boolean emailJaCadastrado(String email){
-		// precisa-se saber como funciona a biblioteca do professor
+	private boolean emailJaCadastrado(String email) throws Exception{
+		//tem que implementar isso ainda
 		return false;
 	}
 

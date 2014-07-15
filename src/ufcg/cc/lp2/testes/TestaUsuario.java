@@ -13,7 +13,7 @@ public class TestaUsuario {
 	public void criaClienteValido() throws Exception{
 		
 		cliente = new Usuario("Fulano", "fulano@gmail.com", "essaAi", "essaAi", "umaAi");
-		Assert.assertEquals(true, cliente.validado);
+		Assert.assertTrue(cliente.validado);
 		
 	}
 	

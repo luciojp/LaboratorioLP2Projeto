@@ -25,7 +25,7 @@ public class GerenteDeUsuarios  {
 	 * @return Descricao do Usuario , com nome e email
 	 */
 	
-	public Usuario pesquisaUsuario(String email){
+	public Usuario pesquisaUsuario(String email) throws Exception{
 		return bd.pesquisaUsuario(email);
 	}
 }

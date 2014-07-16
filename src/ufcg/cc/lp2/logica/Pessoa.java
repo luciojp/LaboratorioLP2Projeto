@@ -7,7 +7,6 @@ public class Pessoa implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String nome, email, senha1, dicaSenha;
 	private BancoDeDados bd = new BancoDeDados();
-	public boolean validado = false;
 
 	/**
 	 * @Autor Antonio Lucio - Apenas criacao do construtor e geracao dos gets and sets - 09/07/2014 - 20:14
@@ -29,7 +28,6 @@ public class Pessoa implements Serializable{
 		this.email = email;
 		this.senha1 = senha1;
 		this.dicaSenha = dicaSenha;
-		validado = true;
 	}
 
 	/**

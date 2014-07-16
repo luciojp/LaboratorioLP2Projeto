@@ -1,16 +1,17 @@
 package ufcg.cc.lp2.logica;
 
-import projetop2.utils.ArquivoDeDados;
-
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+
+import projetop2.utils.ArquivoDeDados;
+
 
 /**
  * Classe que define um banco de dados que armazena todos os usuarios da aplicação.
  * @author Clenimar
  */
-public class BancoDeDados {
+public class BancoDeDados{
 	
 	private List<Usuario> bd;
 	private ArquivoDeDados<List<Usuario>> arquivo = new ArquivoDeDados<List<Usuario>>("bd.txt");
@@ -31,7 +32,11 @@ public class BancoDeDados {
 	 * @param senha
 	 * @return o sucesso ou nao da operacao
 	 */
-	public boolean login(String email, String senha){
+	public boolean login(String email, String senha) throws Exception{
+		if (email == null)
+			throw new Exception("E-mail invalido!");
+		if (senha == null)
+			throw new Exception("Senha invalida!");
 		Iterator<Usuario> it = bd.iterator();
 		Usuario usuarioIt;
 		while (it.hasNext()){
@@ -51,7 +56,7 @@ public class BancoDeDados {
 	 * @param email
 	 * @return
 	 */
-	public boolean hasEmail(String email){
+	public boolean hasEmail(String email) throws Exception{
 		if (pesquisaUsuario(email) != null)
 			return true;
 		return false;
@@ -63,7 +68,9 @@ public class BancoDeDados {
 	 * @return o usuario, caso exista; ou null, caso nao
 	 */
 	
-	public Usuario pesquisaUsuario(String email){
+	public Usuario pesquisaUsuario(String email) throws Exception{
+			if (email == null)
+				throw new Exception("E-mail invalido!");
 			
 			Iterator<Usuario> it = getUsuarios().iterator();
 			Usuario usuarioIt;
@@ -89,7 +96,9 @@ public class BancoDeDados {
 	 * @param usuario
 	 * @return o sucesso ou nao da operacao
 	 */
-	public boolean adicionarUsuario(Usuario usuario){
+	public boolean adicionarUsuario(Usuario usuario) throws Exception{
+		if (usuario == null)
+			throw new Exception("Usuario nulo!");
 		return bd.add(usuario);
 	}
 	
